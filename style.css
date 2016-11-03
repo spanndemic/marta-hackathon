@@ -1,0 +1,340 @@
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.content-wrap {
+    position: relative;
+    width: 1080px;
+    margin: 0 auto;
+}
+
+.title {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    z-index: 20;
+    margin: 0;
+}
+
+.subtitle {
+    position: absolute;
+    text-align: center;
+    width: 250px;
+    top: 50px;
+    line-height: 16px;
+}
+
+
+.tag {
+    width: 12px;
+    height: 12px;
+    border-radius: 6px;
+    border: 2px solid black;
+    background-color: transparent;
+    display: block;
+    position: absolute;
+    z-index: 20;
+    top: 20px;
+    margin-left: -6px;
+}
+
+.tag:hover {
+    border: 2px solid #666;
+}
+
+.tag-label {
+    display: none;
+    position: relative;
+    top: -70px;
+    left: 10px;
+    text-align: center;
+    width: 90px;
+    margin-left: -25px;
+    background-color: white;
+    z-index: 99;
+}
+
+.stop {
+    width: 2px;
+    height: 12px;
+    background-color: black;
+    display: block;
+    position: absolute;
+    display: none;
+}
+
+.train-label {
+    display: none;
+    background-color: white;
+    text-align: center;
+    position: relative;
+    top: -70px;
+    left: 10px;
+    z-index: 100;
+}
+
+#am-trips {
+    height: 100vh;
+    width: 40%;
+    float: left;
+}
+
+#pm-trips {
+    margin-top: 20vh;
+    height: 80vh;
+    width: 100%;
+    float: left;
+    position: relative;
+}
+
+.cover {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+
+.times {
+    position: absolute;
+    height: 84vh;
+    top: 16vh;
+    width: 100%;
+}
+
+.white-bg {
+    background-color: white;
+}
+
+.grey-bg {
+    background-color: #ddd;
+}
+
+.time-marker {
+    width: 6.6666666%;
+    padding-left: 5px;
+    padding-right: 0;
+    height: 100vh;
+    float: left;
+    border-left: 1px solid #ddd;
+}
+
+.time-marker:first-child {
+}
+
+.trip-wrap {
+    height: 18px;
+}
+
+.trains {
+    width: 100%;
+    height: 18px;
+    position: absolute;
+}
+
+.train-marker {
+    width: 6.6666666%;
+    padding-left: 0;
+    padding-right: 0;
+    height: 16px;
+    float: left;
+}
+
+
+.train-marker--one {
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,f9793a+100&0+0,1+100 */
+background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(249,121,58,0.4) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(249,121,58,0.4) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(249,121,58,0.4) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#f9793a',GradientType=1 ); /* IE6-9 */
+}
+
+.train-marker--two {
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,fcb72b+100&0+0,1+100 */
+background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(252,183,43,0.4) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(252,183,43,0.4) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(252,183,43,0.4) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#fcb72b',GradientType=1 ); /* IE6-9 */
+
+}
+
+.train-marker--three {
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,00a2e3+100&0+0,1+100 */
+background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(0,162,227,0.4) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,162,227,0.4) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(0,162,227,0.4) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00a2e3',GradientType=1 ); /* IE6-9 */
+
+}
+
+.schedule {
+    display: none;
+}
+
+.connection {
+    height: 12px;
+    background-color: #bbb;
+    position: absolute;
+    z-index: 10;
+}
+
+.connection--gold-line {
+    /*background-color: yellow;*/
+}
+
+.connection--red-line {
+    /*background-color: red;*/
+}
+
+.connection--green-line {
+    background-color: green;
+}
+
+.connection--blue-line {
+    background-color: blue;
+}
+
+.connection--gold-or-red-line {
+    background-color: white;
+    border-top: 15px solid red;
+    border-bottom: 15px solid yellow;
+    height: 5px;
+}
+
+.connection--green-or-blue-line {
+    background-color: white;
+    border-top: 20px solid blue;
+    border-bottom: 20px solid green;
+    height: 5px;
+}
+
+#controls {
+    position: absolute;
+    width: 40%;
+    right: 35%;
+    left: 25%;
+}
+
+
+#slider {
+    position: absolute;
+    width: 50%;
+    left: 0;
+    top: 45px;
+    z-index: 999;
+}
+
+#slider-label {
+    position: absolute;
+    width: 100%;
+    right: 0;
+    top: 15px;
+}
+
+#slider-key {
+    position: absolute;
+    z-index: 10;
+    top: 15px;
+    right: 0;
+    width: 1080px;
+    right: 0;
+}
+
+#slider-key .train-marker {
+    float: right;
+    height: 45px;
+    text-align: center;
+    line-height: 45px;
+}
+
+#time-saved {
+    position: absolute;
+    right: 2.5%;
+    top: 15px;
+    width: 30%;
+}
+
+#time-saved-label {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+}
+
+#time-saved-amount {
+    position: absolute;
+    right: 0;
+    top: 20px;
+    width: 100%;
+    font-size: 20px;
+}
+
+#time-saved-amount.faster {
+    color: green;
+}
+
+#time-saved-amount.slower {
+    color: red;
+}
+
+#time-saved .btn {
+    top: 5px;
+    left: 120px;
+    position: absolute;
+    z-index: 9999;
+}
+
+#time-saved .btn.new-data {
+    top: 5px;
+    left: 210px;
+    position: absolute;
+    z-index: 9999;
+}
+
+#time-saved .btn.info {
+    top: 5px;
+    left: 300px;
+    position: absolute;
+    z-index: 9999;
+}
+
+.platform-time {
+    position: absolute;
+    top: 10px;
+    height: 12px;
+    background-color: black;
+}
+
+.platform-time.faster {
+    background-color: #00FF00;
+}
+
+.platform-time.slower {
+    background-color: red;
+}
+
+.wait-time-label {
+    display: none;
+    background-color: white;
+    text-align: center;
+    position: relative;
+    top: -70px;
+    left: 10px;
+    z-index: 100;
+    width: 150px;
+}
+
+.result {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    line-height: 18px;
+    margin-top: -5px;
+    background-color: white;
+}
+
+.result.faster {
+    color: green;
+}
+
+.result.slower {
+    color: red;
+}

@@ -1,0 +1,85 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <div class="content-wrap">
+
+        <h1 class="title">Rush Hour 2.0</h1>
+        <div class="subtitle">Stephen Spann, 2016<br />*demica apps LLC</div>
+        
+        <div class="times">
+            <div class="time-marker white-bg">4:00 PM</div>
+            <div class="time-marker white-bg">4:10 PM</div>
+            <div class="time-marker white-bg">4:20 PM</div>
+            <div class="time-marker white-bg">4:30 PM</div>
+            <div class="time-marker white-bg">4:40 PM</div>
+            <div class="time-marker white-bg">4:50 PM</div>
+            <div class="time-marker white-bg">5:00 PM</div>
+            <div class="time-marker white-bg">5:10 PM</div>
+            <div class="time-marker white-bg">5:20 PM</div>
+            <div class="time-marker white-bg">5:30 PM</div>
+            <div class="time-marker white-bg">5:40 PM</div>
+            <div class="time-marker white-bg">5:50 PM</div>
+            <div class="time-marker white-bg">6:00 PM</div>
+            <div class="time-marker white-bg">6:10 PM</div>
+            <div class="time-marker white-bg">6:20 PM</div>
+        </div>
+
+        <div id="pm-trips">
+
+        </div>
+
+        <div id="controls">
+            <div id="slider-key">
+                <div class="train-marker train-marker--three">10</div>
+                <div class="train-marker train-marker--two">10</div>
+                <div class="train-marker train-marker--one">10</div>
+            </div>
+            <div id="slider-label">Train frequency (minutes):</div>
+            <div id="slider"></div>
+        </div>
+
+        <div id="time-saved">
+            <div id="time-saved-label">Total time saved:</div>
+            <div id="time-saved-amount"></div>
+            <button class="btn btn-primary" id="optimize">Optimize</button>
+            <button class="btn btn-primary new-data" id="new-data">New Data</button>
+            <button class="btn info" data-toggle="modal" data-target="#info">Info</button>
+        </div>
+
+    </div>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="info">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Rush Hour 2.0</h4>
+            </div>
+            <div class="modal-body">
+                <p>This visualization demonstrates how adjusting train times can reduce the overall time Atlantans spend waiting for trains.</p>
+                <p>Adjust the slider to see the effect on the randomly-generated trips below, or press 'Optimize' to find the ideal solution for the current dataset.</p>
+                <p>This system could be applied to large yearly datasets or aggregated datasets (ex: all Falcons gamedays) to predict how alternate and potentially dynamic schedules could improve Atlanta commute times without the cost of adding new trains.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="scripts/TimeHelper.js"></script>
+    <script src="scripts/ScheduleHelper.js"></script>
+    <script src="scripts/DataHelper.js"></script>
+    <script src="scripts/ScheduleOptimizer.js"></script>
+    <script src="scripts/TripView.js"></script>
+</body>
+</html>

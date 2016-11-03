@@ -1,0 +1,5 @@
+route_id,route_short_name,route_long_name,route_desc,route_type,route_url,route_color,route_text_color
+8766,BLUE,BLUE-East/West Line,,1,,0101DF,
+8746,GOLD,GOLD-Northeast Doraville Line,,1,,FFBF00,
+8748,GREEN,GREEN-Proctor Creek Line,,1,,04B404,
+8747,RED,RED-North South North Springs Line,,1,,FF0000,
