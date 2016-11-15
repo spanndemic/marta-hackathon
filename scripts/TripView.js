@@ -218,7 +218,7 @@ $(function() {
                     '<div class="stop trip-start" data-row="' + i + '" data-start-station="' + _trips[i].start.station_id + '" data-min-train-time="' + _trips[i].start.min_train_time + '" data-min-train-time-display="' + minTrainTime + '"></div>' + 
                     '<div class="stop trip-end" data-row="' + i + '" data-end-station="' + _trips[i].end.station_id + '"></div>' + 
                     '<div class="tag tag-off" data-row="' + i + '" data-time="' + _trips[i].end.transit_time + '" data-time-display="' + tagOffTime + '"><div class="tag-label">Exit Station<br />' + tagOffTime + '<br />' + endStation + '</div></div>' +
-                    '<div class="connection connection--' + railLine + '" data-row="' + i + '" data-route="' + _trips[i].start.route + '" data-route-direction="' + _trips[i].start.route_direction + '"><div class="train-label"></div></div>' + 
+                    '<div class="connection connection--' + railLine + '" data-row="' + i + '" data-route="' + _trips[i].start.route + '" data-route-direction="' + _trips[i].start.route_direction + '"><div class="train-begin"></div><div class="train-middle"></div><div class="train-end"></div><div class="train-label"></div></div>' + 
                     '<div class="platform-time" data-initial-platform-time="' + platformTime + '" data-row="' + i + '"><div class="wait-time-label"></div></div>' + 
                     '<div class="result" data-row="' + i + '">-0 min</div>');
 
