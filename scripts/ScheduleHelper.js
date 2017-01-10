@@ -197,7 +197,7 @@ var ScheduleHelper = (function () {
                 offset,
                 i,
                 time,
-                schedule = "";
+                schedule = [];
 
             offset = stations.indexOf(stationId);
             interval = intervals[offset];
@@ -205,12 +205,8 @@ var ScheduleHelper = (function () {
             for(i = 0; i < startTimes.length; i++) {
 
                 time = startTimes[i] + (interval * 60);
-                schedule += TimeHelper.formatTime(TimeHelper.secondsToTimeString(time));
+                schedule.push(TimeHelper.formatTime(TimeHelper.secondsToTimeString(time)));
 
-                if (i != startTimes.length - 1) {
-                    // all get comma except last one
-                    schedule += ", ";
-                }
             }
 
             return schedule;
