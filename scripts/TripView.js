@@ -342,7 +342,8 @@ $(function() {
 
     _generateData();
     _renderData();
-    _updateTrainTimes(10, 10);
+    $("#slider").slider("values", 0, 10);
+    $("#slider").slider("values", 1, 20);
 
     $('#info').modal('show');
 
