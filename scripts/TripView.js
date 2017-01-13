@@ -50,7 +50,7 @@ $(function() {
             });
         },
 
-        _updateTrainTimes = function _updateTrainTimes(first_offset = 10, second_offset = 20) {
+        _updateTrainTimes = function _updateTrainTimes(first_offset = 10, second_offset = 10) {
         
             // loop through each trip
             $('.trip-wrap').each(function() {
@@ -124,18 +124,24 @@ $(function() {
                 _getSpeedClass($('.result', $(this)), diff);
                 var change;
                 var changeLabel;
+                var timeSaved = 0;
                 if (diff > 0) {
-                    change = '-' + diff + ' min';
+                    change = '+' + diff + ' min';
                     changeLabel = '+' + diff + ' min';
                 } else if (diff < 0) {
-                    change = '+' + (diff * -1) + ' min';
+                    change = '-' + (diff * -1) + ' min';
                     changeLabel = diff + ' min';
+                    timeSaved = diff * -1;
                 } else {
-                    change = '+0 min';
+                    change = '';
                     changeLabel = '-0 min';
                 }
                 $('.result', $(this)).html(change);
                 $('.result', $(this)).attr('data-result-diff', diff);
+
+                // show green for time saved
+                $('.time-saved', $(this)).css('left', _timeToLeftOffset(tripEndTime));
+                $('.time-saved', $(this)).css('width', _minutesToWidth(timeSaved));
 
                 $('.platform-time .wait-time-label', $(this)).html('Walk time: 1 min<br />Wait time: ' + Math.ceil(currentPlatformTime/60) + ' min<br />(' + changeLabel + ' change)');
 
@@ -149,6 +155,56 @@ $(function() {
             });
             $('#time-saved-amount').html(totalTimeSaved + ' min');
             _getSpeedClass($('#time-saved-amount'), -totalTimeSaved);
+
+            // adjust the train schedule
+            _displaySchedule(0, ScheduleHelper.getScheduleForRouteStation(1, 0, 41, first_offset, second_offset), first_offset, second_offset); // red NB
+            _displaySchedule(1, ScheduleHelper.getScheduleForRouteStation(1, 1, 54, first_offset, second_offset), first_offset, second_offset); // red SB
+            _displaySchedule(2, ScheduleHelper.getScheduleForRouteStation(0, 0, 41, first_offset, second_offset), first_offset, second_offset); // gold NB
+            _displaySchedule(3, ScheduleHelper.getScheduleForRouteStation(0, 1, 50, first_offset, second_offset), first_offset, second_offset); // gold SB
+
+        },
+
+        _displaySchedule = function _displaySchedule(scheduleNumber, schedule, first_offset, second_offset) {
+
+            var i;
+            for (i = 0; i < schedule.length; i++) {
+
+                if ($('#schedule' + scheduleNumber + ' td').length > i) {  
+                    // child exists, just update html
+                    var el = $('#schedule' + scheduleNumber + ' td:nth-child(' + (i + 3) + ')'); // +3 because 2 th elements
+                    el.html(schedule[i]);
+                } else {
+                    // child does not exist, append
+                    var remainder = (i + 1) % 3;
+                    var className;
+                    if (remainder == 1) {
+                        className = 'train-marker--one';
+                    } else if (remainder == 2) {
+                        className = 'train-marker--two';
+                    } else {
+                        className = 'train-marker--three';
+                    }
+
+                    var el = $('<td class="schedule-time ' + className + '">' + schedule[i] + '</td>');
+                    $('#schedule' + scheduleNumber).append(el);
+
+                    if (first_offset == 10 && second_offset == 10) {
+                        // default, save time in data attribute
+                        el.attr('data-default-time', schedule[i]);
+                    }
+                }
+
+                
+            }
+
+            // highlight any times that are not the default time
+            $('.schedule-time').each(function(i, el){
+                if ($(this).attr('data-default-time') != $(this).html()) {
+                    $(this).css('color', 'blue');
+                } else {
+                    $(this).css('color', 'black');
+                }
+            });
 
         },
 
@@ -166,6 +222,12 @@ $(function() {
             return percent + '%';
         },
 
+        _minutesToWidth = function _minutesToWidth(minutes) {
+            var hours = minutes/60, // calculate hours
+                percent = hours * 40; // hours get 40% of screen
+            return percent + '%';
+        },
+
         _getSpeedClass = function _getSpeedClass(el, value) {
             el.removeClass('slower');
             el.removeClass('faster');
@@ -179,7 +241,7 @@ $(function() {
         _generateData = function _generateData() {
             _trips = [];
             var i;
-            for (i = 0; i < 28; i++) {
+            for (i = 0; i < 300; i++) {
                 _trips.push(DataHelper.generateTrip("PM"));
             }
         },
@@ -217,9 +279,10 @@ $(function() {
                     '<div class="tag tag-on" data-row="' + i + '" data-time="' + _trips[i].start.transit_time + '" data-time-display="' + tagOnTime + '"><div class="tag-label">Enter Station<br />' + tagOnTime + '<br />' + startStation + '</div></div>' + 
                     '<div class="stop trip-start" data-row="' + i + '" data-start-station="' + _trips[i].start.station_id + '" data-min-train-time="' + _trips[i].start.min_train_time + '" data-min-train-time-display="' + minTrainTime + '"></div>' + 
                     '<div class="stop trip-end" data-row="' + i + '" data-end-station="' + _trips[i].end.station_id + '"></div>' + 
-                    '<div class="tag tag-off" data-row="' + i + '" data-time="' + _trips[i].end.transit_time + '" data-time-display="' + tagOffTime + '"><div class="tag-label">Exit Station<br />' + tagOffTime + '<br />' + endStation + '</div></div>' +
+                    //'<div class="tag tag-off" data-row="' + i + '" data-time="' + _trips[i].end.transit_time + '" data-time-display="' + tagOffTime + '"><div class="tag-label">Exit Station<br />' + tagOffTime + '<br />' + endStation + '</div></div>' +
                     '<div class="connection connection--' + railLine + '" data-row="' + i + '" data-route="' + _trips[i].start.route + '" data-route-direction="' + _trips[i].start.route_direction + '"><div class="train-begin"></div><div class="train-middle"></div><div class="train-end"></div><div class="train-label"></div></div>' + 
                     '<div class="platform-time" data-initial-platform-time="' + platformTime + '" data-row="' + i + '"><div class="wait-time-label"></div></div>' + 
+                    '<div class="time-saved" data-row="' + i + '"><div class="time-saved-label"></div></div>' + 
                     '<div class="result" data-row="' + i + '">-0 min</div>');
 
             }
@@ -251,13 +314,25 @@ $(function() {
             var second_offset = ui.values[1] - first_offset;
             var third_offset = 30 - (first_offset + second_offset);
             var unit = 160 / 24;
-            $('.train-marker--one').css('width', (unit * first_offset / 10) + '%');
-            $('.train-marker--two').css('width', (unit * second_offset / 10) + '%');
-            $('.train-marker--three').css('width', (unit * third_offset / 10) + '%');
+            $('.trains .train-marker--one').css('width', (unit * first_offset / 10) + '%');
+            $('.trains .train-marker--two').css('width', (unit * second_offset / 10) + '%');
+            $('.trains .train-marker--three').css('width', (unit * third_offset / 10) + '%');
 
             $('#slider-key .train-marker--one').html(first_offset);
             $('#slider-key .train-marker--two').html(second_offset);
             $('#slider-key .train-marker--three').html(third_offset);
+
+            // get new schedule
+            // loop through schedule, adjust 'left' css based on depart times
+            // 
+
+            $('.trains .train-marker--one').css('left', (unit * first_offset / 10) + '%');
+            $('.trains .train-marker--two').css('left', (unit * second_offset / 10) + '%');
+            $('.trains .train-marker--three').css('left', (unit * third_offset / 10) + '%');
+
+            $('#slider-key .train-key--one').html(first_offset);
+            $('#slider-key .train-key--two').html(second_offset);
+            $('#slider-key .train-key--three').html(third_offset);
 
             _updateTrainTimes(first_offset, second_offset);
         }

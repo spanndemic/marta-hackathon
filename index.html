@@ -18,8 +18,48 @@
 
     <div class="content-wrap">
 
-        <h1 class="title">Rush Hour 2.0</h1>
-        <div class="subtitle">Stephen Spann, 2016<br />*demica apps LLC</div>
+        <div class="header">
+            <h1 class="title">Rush Hour 2.0</h1>
+            <div class="subtitle">Stephen Spann, 2016<br />*demica apps LLC</div>
+
+            <div id="controls">
+                <div id="slider-key">
+                    <div class="train-key train-key--three">10</div>
+                    <div class="train-key train-key--two">10</div>
+                    <div class="train-key train-key--one">10</div>
+                </div>
+                <div id="slider-label">Train Intervals (minutes):</div>
+                <div id="slider"></div>
+            </div>
+
+            <div id="time-saved">
+                <div id="time-saved-label">Total time saved:</div>
+                <div id="time-saved-amount"></div>
+                <button class="btn btn-primary" id="optimize">Optimize</button>
+                <button class="btn btn-primary new-data" id="new-data">New Data</button>
+                <button class="btn info" data-toggle="modal" data-target="#info">Info</button>
+            </div>
+
+            <table id="departure-times">
+                <tr id="schedule0">
+                    <th>Red Line NB</th>
+                    <th><div class="station station--red-line">S7</div></th>
+                </tr>
+                <tr id="schedule1">
+                    <th>Red Line SB</th>
+                    <th><div class="station station--red-line">N11</div></th>
+                </tr>
+                <tr id="schedule2">
+                    <th>Gold Line NB</th>
+                    <th><div class="station station--gold-line">S7</div></th>
+                </tr>
+                <tr id="schedule3">
+                    <th>Gold Line SB</th>
+                    <th><div class="station  station--gold-line">NE10</div></th>
+                </tr>
+            </table>
+        </div>
+
         
         <div class="times">
             <div class="time-marker white-bg">4:00 PM</div>
@@ -36,30 +76,14 @@
             <div class="time-marker white-bg">5:50 PM</div>
             <div class="time-marker white-bg">6:00 PM</div>
             <div class="time-marker white-bg">6:10 PM</div>
-            <div class="time-marker white-bg">6:20 PM</div>
+            <div class="time-marker white-bg">&nbsp;</div>
         </div>
 
         <div id="pm-trips">
 
         </div>
 
-        <div id="controls">
-            <div id="slider-key">
-                <div class="train-marker train-marker--three">10</div>
-                <div class="train-marker train-marker--two">10</div>
-                <div class="train-marker train-marker--one">10</div>
-            </div>
-            <div id="slider-label">Train frequency (minutes):</div>
-            <div id="slider"></div>
-        </div>
-
-        <div id="time-saved">
-            <div id="time-saved-label">Total time saved:</div>
-            <div id="time-saved-amount"></div>
-            <button class="btn btn-primary" id="optimize">Optimize</button>
-            <button class="btn btn-primary new-data" id="new-data">New Data</button>
-            <button class="btn info" data-toggle="modal" data-target="#info">Info</button>
-        </div>
+        
 
     </div>
 

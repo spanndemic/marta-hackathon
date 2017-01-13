@@ -189,7 +189,7 @@ var ScheduleHelper = (function () {
 
         },
 
-        _getScheduleForRouteStation = function _getScheduleForRouteStation(route, routeDirection, stationId) {
+        _getScheduleForRouteStation = function _getScheduleForRouteStation(route, routeDirection, stationId, firstOffset, secondOffset) {
 
             var intervals = _getTimeIntervalsForRoute(route, routeDirection),
                 stations = _getStationsForRoute(route, routeDirection),
@@ -199,12 +199,15 @@ var ScheduleHelper = (function () {
                 time,
                 schedule = [];
 
-            offset = stations.indexOf(stationId);
+            offset = stations.indexOf(stationId); // also interval index?
             interval = intervals[offset];
 
-            for(i = 0; i < startTimes.length; i++) {
+            var stopTimes = _getStopTimes(startTimes, offset, firstOffset, secondOffset);
 
-                time = startTimes[i] + (interval * 60);
+
+            for(i = 0; i < stopTimes.length; i++) {
+
+                time = stopTimes[i] + (interval * 60);
                 schedule.push(TimeHelper.formatTime(TimeHelper.secondsToTimeString(time)));
 
             }
