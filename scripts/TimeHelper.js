@@ -49,9 +49,9 @@ var TimeHelper = (function () {
         _getRandomStartTime = function _getRandomStartTime(amPm) {
             var startTime;
             if (amPm == "AM") {
-                startTime = Math.floor((Math.random() * 10800)) + 21600; // random AM time
+                startTime = (Math.floor(Math.random() * 180) * 60) + 21600; // random AM time
             } else {
-                startTime = Math.floor((Math.random() * 4200)) + 59100; // random PM time (limited to 4-6 PM, 25 min padding)
+                startTime = (Math.floor(Math.random() * 70) * 60) + 59100; // random PM time (limited to 4-6 PM, 25 min padding)
             }
             return startTime;
         };
