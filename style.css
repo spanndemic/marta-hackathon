@@ -196,6 +196,8 @@ body {
     padding-right: 0;
     height: 16px;
     float: left;
+    -webkit-transition-duration: 0.5s; /* Safari */
+    transition-duration: 0.5s;
 }
 
 .trains .train-marker:before {
