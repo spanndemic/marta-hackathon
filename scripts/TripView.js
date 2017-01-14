@@ -241,7 +241,7 @@ $(function() {
         _generateData = function _generateData() {
             _trips = [];
             var i;
-            for (i = 0; i < 300; i++) {
+            for (i = 0; i < 20; i++) {
                 _trips.push(DataHelper.generateTrip("PM"));
             }
         },
