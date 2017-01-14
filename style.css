@@ -42,21 +42,35 @@ body {
     margin-right: auto;
     display: block;
     width: auto;
-    max-width: 900px;
+    max-width: 1080px;
+    border-collapse: collapse;
+    display: table;
+    border-width: 0px;
+    margin 0px;
+    width:100%;
+    padding:0px;
+}
+
+#departure-times tbody {
+    border-width: 0px;
+    margin 0px;
+    width:100%;
+    height: 100%;
+    padding:0px;
 }
 
 
 .tag {
-    width: 12px;
-    height: 12px;
-    border-radius: 6px;
-    border: 2px solid black;
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    border: 3px solid black;
     background-color: transparent;
     display: block;
     position: absolute;
     z-index: 20;
-    top: 20px;
-    margin-left: -6px;
+    top: 0px;
+    margin-left: -8px;
 }
 
 .train-begin, .train-end {
@@ -72,12 +86,12 @@ body {
 }
 
 .train-begin {
-    left: -6px;
+    left: -8px;
 }
 
 .train-end {
     left: auto;
-    right: -6px;
+    right: -8px;
 }
 
 .train-middle {
@@ -141,7 +155,7 @@ body {
 
 #pm-trips {
     margin-top: 300px;
-    height: 80vh;
+    height: auto;
     width: 100%;
     float: left;
     position: relative;
@@ -182,6 +196,7 @@ body {
 
 .trip-wrap {
     height: 22px;
+    position: relative;
 }
 
 .trains {
@@ -256,7 +271,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000a2e3', e
 }
 
 .connection {
-    height: 12px;
+    height: 22px;
     background-color: transparent;
     position: absolute;
     z-index: 10;
@@ -384,8 +399,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000a2e3', e
 
 .platform-time {
     position: absolute;
-    top: 10px;
-    height: 12px;
+    top: 5px;
+    height: 6px;
     background-color: black;
 }
 
@@ -456,6 +471,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000a2e3', e
     border-color: #f8b951;
 }
 
+/*
 .connection--gold-line .train-begin, .connection--gold-line .train-end {
     border-color: #f8b951;
 }
@@ -471,5 +487,5 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000a2e3', e
 .connection--red-line .train-middle {
     background-color: red;
 }
-
+*/
 

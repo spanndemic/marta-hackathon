@@ -241,7 +241,7 @@ $(function() {
         _generateData = function _generateData() {
             _trips = [];
             var i;
-            for (i = 0; i < 20; i++) {
+            for (i = 0; i < 50; i++) {
                 _trips.push(DataHelper.generateTrip("PM"));
             }
         },
@@ -276,14 +276,14 @@ $(function() {
                         '<div class="train-marker train-marker--two"></div>' +
                         '<div class="train-marker train-marker--three"></div>' +
                     '</div>' +
-                    '<div class="tag tag-on" data-row="' + i + '" data-time="' + _trips[i].start.transit_time + '" data-time-display="' + tagOnTime + '"><div class="tag-label">Enter Station<br />' + tagOnTime + '<br />' + startStation + '</div></div>' + 
-                    '<div class="stop trip-start" data-row="' + i + '" data-start-station="' + _trips[i].start.station_id + '" data-min-train-time="' + _trips[i].start.min_train_time + '" data-min-train-time-display="' + minTrainTime + '"></div>' + 
-                    '<div class="stop trip-end" data-row="' + i + '" data-end-station="' + _trips[i].end.station_id + '"></div>' + 
+                    '<div class="tag tag-on" data-time="' + _trips[i].start.transit_time + '" data-time-display="' + tagOnTime + '"><div class="tag-label">Enter Station<br />' + tagOnTime + '<br />' + startStation + '</div></div>' + 
+                    '<div class="stop trip-start" data-start-station="' + _trips[i].start.station_id + '" data-min-train-time="' + _trips[i].start.min_train_time + '" data-min-train-time-display="' + minTrainTime + '"></div>' + 
+                    '<div class="stop trip-end" data-end-station="' + _trips[i].end.station_id + '"></div>' + 
                     //'<div class="tag tag-off" data-row="' + i + '" data-time="' + _trips[i].end.transit_time + '" data-time-display="' + tagOffTime + '"><div class="tag-label">Exit Station<br />' + tagOffTime + '<br />' + endStation + '</div></div>' +
-                    '<div class="connection connection--' + railLine + '" data-row="' + i + '" data-route="' + _trips[i].start.route + '" data-route-direction="' + _trips[i].start.route_direction + '"><div class="train-begin"></div><div class="train-middle"></div><div class="train-end"></div><div class="train-label"></div></div>' + 
-                    '<div class="platform-time" data-initial-platform-time="' + platformTime + '" data-row="' + i + '"><div class="wait-time-label"></div></div>' + 
-                    '<div class="time-saved" data-row="' + i + '"><div class="time-saved-label"></div></div>' + 
-                    '<div class="result" data-row="' + i + '">-0 min</div>');
+                    '<div class="connection connection--' + railLine + '" data-route="' + _trips[i].start.route + '" data-route-direction="' + _trips[i].start.route_direction + '"><div class="train-begin"></div><div class="train-middle"></div><div class="train-end"></div><div class="train-label"></div></div>' + 
+                    '<div class="platform-time" data-initial-platform-time="' + platformTime + '"><div class="wait-time-label"></div></div>' + 
+                    '<div class="time-saved"><div class="time-saved-label"></div></div>' + 
+                    '<div class="result">-0 min</div>');
 
             }
 
