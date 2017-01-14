@@ -126,10 +126,10 @@ $(function() {
                 var changeLabel;
                 var timeSaved = 0;
                 if (diff > 0) {
-                    change = '+' + diff + ' min';
-                    changeLabel = '+' + diff + ' min';
+                    change = '-' + diff + ' min';
+                    changeLabel = '-' + diff + ' min';
                 } else if (diff < 0) {
-                    change = '-' + (diff * -1) + ' min';
+                    change = '+' + (diff * -1) + ' min';
                     changeLabel = diff + ' min';
                     timeSaved = diff * -1;
                 } else {
