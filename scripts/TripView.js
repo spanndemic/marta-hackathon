@@ -96,9 +96,9 @@ $(function() {
                 // add train label
                 var routeDirectionText, routeText, startStationName, endStationName;
                 if (routeDirection == 0) {
-                    routeDirectionText = "North";
+                    routeDirectionText = "NB";
                 } else {
-                    routeDirectionText = "South";
+                    routeDirectionText = "SB";
                 }
                 if (route == 0) {
                     routeText = "Gold Line " + routeDirectionText;
@@ -108,6 +108,7 @@ $(function() {
                 startStationName = startTimeText + ' ' + ScheduleHelper.getStationName(startStationId);
                 endStationName = endTimeText + ' ' + ScheduleHelper.getStationName(endStationId);
                 $('.train-label', $(this)).html(routeText + '<br />' + startStationName + '<br />' + endStationName);
+                $('.route-label', $(this)).html(routeText);
 
                 // calculate time on platform
                 var initialPlatformTime = $('.platform-time', $(this)).data('initial-platform-time')
@@ -241,7 +242,7 @@ $(function() {
         _generateData = function _generateData() {
             _trips = [];
             var i;
-            for (i = 0; i < 50; i++) {
+            for (i = 0; i < 10; i++) {
                 _trips.push(DataHelper.generateTrip("PM"));
             }
         },
@@ -276,6 +277,9 @@ $(function() {
                         '<div class="train-marker train-marker--two"></div>' +
                         '<div class="train-marker train-marker--three"></div>' +
                     '</div>' +
+                    '<div class="route-label"></div>' + // filled in later 
+                    '<div class="station station--origin station--' + railLine + '">' + ScheduleHelper.getStationAbbreviation(_trips[i].start.station_id) + '</div>' +
+                    '<div class="station station--destination station--' + railLine + '">' + ScheduleHelper.getStationAbbreviation(_trips[i].end.station_id) + '</div>' +
                     '<div class="tag tag-on" data-time="' + _trips[i].start.transit_time + '" data-time-display="' + tagOnTime + '"><div class="tag-label">Enter Station<br />' + tagOnTime + '<br />' + startStation + '</div></div>' + 
                     '<div class="stop trip-start" data-start-station="' + _trips[i].start.station_id + '" data-min-train-time="' + _trips[i].start.min_train_time + '" data-min-train-time-display="' + minTrainTime + '"></div>' + 
                     '<div class="stop trip-end" data-end-station="' + _trips[i].end.station_id + '"></div>' + 

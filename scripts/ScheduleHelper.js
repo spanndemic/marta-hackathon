@@ -470,6 +470,85 @@ var ScheduleHelper = (function () {
                 case 76: return 'Atlanta Streetcar'; break;
             }
         
+        },
+
+        _getStationAbbreviation = function _getStationAbbreviation(stationId) {
+
+            switch(stationId) {
+                case 0: return 'MARTA Training'; break;
+                case 1: return 'CTS Test Lab 1'; break;
+                case 2: return 'Test Bus Facility'; break;
+                case 3: return 'HPEM Lab'; break;
+                case 4: return 'MARTA Training 2'; break;
+                case 5: return 'NO USE Rail Facility'; break;
+                case 6: return 'NO USE Bus Facility'; break;
+                case 7: return 'ESIL Rail Facility'; break;
+                case 8: return 'ESIL Bus Facility'; break;
+                case 9: return 'Cobb Garage'; break;
+                case 13: return 'Bankhead'; break;
+                case 14: return 'MARTA Rail Station'; break;
+                case 15: return 'SAT-Facility'; break;
+                case 16: return 'Chamblee Encoding Facility'; break;
+                case 18: return 'N10'; break;
+                case 19: return 'S1'; break;
+                case 20: return 'NE8'; break;
+                case 21: return 'Ashby'; break;
+                case 22: return '5P'; break; // Five Points (no abbr?)
+                case 23: return 'Vine City'; break;
+                case 24: return 'Dome/GWCC'; break;
+                case 25: return 'West Lake'; break;
+                case 26: return 'H. E. Holmes'; break;
+                case 27: return 'Georgia State'; break;
+                case 28: return 'King Memorial'; break;
+                case 29: return 'Inman Park'; break;
+                case 30: return 'Edgewood/Candler Park'; break;
+                case 31: return 'East Lake'; break;
+                case 32: return 'Decatur'; break;
+                case 33: return 'Avondale'; break;
+                case 34: return 'Kensington'; break;
+                case 35: return 'Indian Creek'; break;
+                case 36: return 'S2'; break;
+                case 37: return 'S3'; break;
+                case 38: return 'S4'; break;
+                case 39: return 'S5'; break;
+                case 40: return 'S6'; break;
+                case 41: return 'S7'; break;
+                case 42: return 'N1'; break;
+                case 43: return 'N2'; break;
+                case 44: return 'N3'; break;
+                case 45: return 'N4'; break;
+                case 46: return 'N5'; break;
+                case 47: return 'N6'; break;
+                case 48: return 'NE7'; break;
+                case 49: return 'NE9'; break;
+                case 50: return 'NE10'; break;
+                case 51: return 'N7'; break;
+                case 52: return 'N8'; break;
+                case 53: return 'N9'; break;
+                case 54: return 'N11'; break;
+                case 55: return 'Laredo Garage'; break;
+                case 56: return 'Perry Garage'; break;
+                case 57: return 'Hamilton Garage'; break;
+                case 58: return 'Brady Garage'; break;
+                case 60: return 'Garnett'; break;
+                case 61: return 'Gwinnett'; break;
+                case 62: return 'GRTA Garage'; break;
+                case 63: return 'CTRAN Garage'; break;
+                case 64: return 'CTRAN - Airport'; break;
+                case 65: return 'No_ USE_Bus_Facility'; break;
+                case 66: return 'Lenox Parking'; break;
+                case 67: return 'Medical Center - Parking'; break;
+                case 68: return 'College Park - Parking'; break;
+                case 69: return 'GRTA Garage - American Coach'; break;
+                case 70: return 'GRTA Garage - Frontage Road'; break;
+                case 71: return 'CCT- Marietta Transfer Center'; break;
+                case 72: return 'CCT-Cumberland Transfer Center'; break;
+                case 73: return 'CCT-Acworth Park and Ride Lot'; break;
+                case 74: return 'Rail Station Wireless AP'; break;
+                case 75: return 'Pre-Prod Test Gate'; break;
+                case 76: return 'Atlanta Streetcar'; break;
+            }
+        
         };
  
     return {
@@ -479,7 +558,8 @@ var ScheduleHelper = (function () {
         getRideDuration: _getRideDuration,
         getRandomTrip: _getRandomTrip,
         getRailLine: _getRailLine,
-        getStationName: _getStationName
+        getStationName: _getStationName,
+        getStationAbbreviation: _getStationAbbreviation
     };
 
 })();

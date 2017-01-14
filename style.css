@@ -452,23 +452,24 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000a2e3', e
 
 .station {
     display: inline-block;
-    width: 40px;
-    height: 40px;
-    border: 4px solid transparent;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    border-radius: 20px;
+    width: 30px;
+    height: 30px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
     font-size: 11px;
-    line-height: 32px;
+    line-height: 30px;
     text-align: center;
 }
 
 .station--red-line {
-    border-color: red;
+    background-color: red;
+    background-color: #ff7c7c;
+    /*color: white;*/
 }
 
 .station--gold-line {
-    border-color: #f8b951;
+    background-color: #f8b951;
 }
 
 /*
@@ -489,3 +490,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000a2e3', e
 }
 */
 
+.route-label {
+    font-weight: bold;
+    position: absolute;
+}
