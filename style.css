@@ -10,7 +10,7 @@ body {
 
 .header {
     position: fixed;
-    height: 200px;
+    height: 275px;
     background-color: white;
     width: 100%;
     z-index: 9999;
@@ -42,7 +42,7 @@ body {
     margin-right: auto;
     display: block;
     width: auto;
-    /*max-width: 868px;*/
+    max-width: 900px;
 }
 
 
@@ -140,7 +140,7 @@ body {
 }
 
 #pm-trips {
-    margin-top: 240px;
+    margin-top: 300px;
     height: 80vh;
     width: 100%;
     float: left;
@@ -156,7 +156,7 @@ body {
 .times {
     position: fixed;
     height: 100%;
-    top: 200px;
+    top: 275px;
     width: 1080px;
 }
 
