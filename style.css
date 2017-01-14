@@ -453,17 +453,23 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000a2e3', e
 }
 
 .station--gold-line {
-    border-color: #FFD700;
+    border-color: #f8b951;
 }
 
-/*
 .connection--gold-line .train-begin, .connection--gold-line .train-end {
-    background-color: #FFD700;
+    border-color: #f8b951;
+}
+
+.connection--gold-line .train-middle {
+    background-color: #f8b951;
 }
 
 .connection--red-line .train-begin, .connection--red-line .train-end {
+    border-color: red;
+}
+
+.connection--red-line .train-middle {
     background-color: red;
 }
-*/
 
 
