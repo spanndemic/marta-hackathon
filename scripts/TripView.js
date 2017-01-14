@@ -290,7 +290,7 @@ $(function() {
 
                 $("*[data-row]").each(function(){
                     var rowdata = parseInt($(this).data('row'));
-                    $(this).css('top', ((rowdata * 18) + 2) + 'px'); // each row 100px
+                    $(this).css('top', ((rowdata * 22) + 2) + 'px'); // each row 100px
                 });
 
                 // adjust everything based on data-time.... (1 min = 2 px, 1 hr = 120 px)
