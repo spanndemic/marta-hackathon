@@ -530,7 +530,7 @@ var ScheduleHelper = (function () {
                 case 56: return 'Perry Garage'; break;
                 case 57: return 'Hamilton Garage'; break;
                 case 58: return 'Brady Garage'; break;
-                case 60: return 'Garnett'; break;
+                case 60: return 'S1'; break;
                 case 61: return 'Gwinnett'; break;
                 case 62: return 'GRTA Garage'; break;
                 case 63: return 'CTRAN Garage'; break;
