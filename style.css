@@ -4,7 +4,7 @@ body {
 
 .content-wrap {
     position: relative;
-    width: 1080px;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -171,7 +171,8 @@ body {
     position: fixed;
     height: 100%;
     top: 275px;
-    width: 1080px;
+    right: 0;
+    left: 200px;
 }
 
 .white-bg {
@@ -195,7 +196,7 @@ body {
 }
 
 .trip-wrap {
-    height: 22px;
+    height: 34px;
     position: relative;
 }
 
@@ -493,4 +494,27 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000a2e3', e
 .route-label {
     font-weight: bold;
     position: absolute;
+    left: 10px;
+    line-height: 30px;
 }
+
+.station--origin, .station--destination {
+    position: absolute;
+    font-weight: bold;
+    left: 100px;
+}
+
+.station--destination {
+    left: 140px;
+}
+
+.visualization-wrap {
+    margin-left: 200px;
+    position: relative;
+    overflow-x: hidden;
+    height: 30px;
+}
+
+
+
+
