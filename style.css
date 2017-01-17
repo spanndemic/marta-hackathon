@@ -35,19 +35,12 @@ body {
 
 #departure-times {
     position: absolute;
-    top: 75px;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
+    top: 0;
+    margin-left: 250px;
     display: block;
-    width: auto;
-    max-width: 1080px;
     border-collapse: collapse;
     display: table;
     border-width: 0px;
-    margin 0px;
-    width:100%;
     padding:0px;
 }
 
@@ -417,6 +410,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000a2e3', e
 
 #departure-times td {
     padding: 5px;
+    text-align: center;
 }
 
 .station {
@@ -484,5 +478,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000a2e3', e
     height: 30px;
 }
 
+.col0 {
+    background-color: #eee;
+}
+
+.col1 {
+    background-color: #ddd;
+}
+
+.col2 {
+    background-color: #ccc;
+}
+
+.col3 {
+    background-color: #bbb;
+}
 
 

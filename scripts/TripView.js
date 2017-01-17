@@ -247,14 +247,16 @@ $(function() {
                     el.html(schedule[i]);
                 } else {
                     // child does not exist, append
-                    var remainder = (i + 1) % 3;
+                    var remainder = (i + 1) % 4;
                     var className;
                     if (remainder == 1) {
-                        className = 'train-marker--one';
+                        className = 'col0';
                     } else if (remainder == 2) {
-                        className = 'train-marker--two';
+                        className = 'col1';
+                    } else if (remainder == 3) {
+                        className = 'col2';
                     } else {
-                        className = 'train-marker--three';
+                        className = 'col3';
                     }
 
                     var el = $('<td class="schedule-time ' + className + '">' + schedule[i] + '</td>');

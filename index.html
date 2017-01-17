@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>*demic apps Data Visualizations | MARTA Hackathon - Rush Hour 2.0</title>
+    <title>demic apps Data Visualizations | MARTA Hackathon - Rush Hour 2.0</title>
     <meta name="description" content="This visualization demonstrates how adjusting train times can reduce the overall time Atlantans spend waiting for trains." />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
@@ -20,7 +20,7 @@
 
         <div class="header">
             <h1 class="title">Rush Hour 2.0</h1>
-            <div class="subtitle">Stephen Spann, 2016<br />*demica apps LLC</div>
+            <div class="subtitle">Stephen Spann, 2016<br /><a href="http://demicapps.com" target="_blank">demica apps LLC</a></div>
 
             <div id="time-saved">
                 <div id="time-saved-label">Total time saved:</div>
@@ -33,18 +33,37 @@
             <table id="departure-times">
                 <thead>
                     <tr>
-                        <th>Schedule Adjustments:</th>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>
-                            <button class="reduce-time reduce-time-1">-</button>
+                        <th colspan="2">Schedule Adjustments:</th>
+                        <td class="col0">
+                            <span class="schedule-change-label schedule-change-label-0">+0</span>
+                        </td>
+                        <td class="col1">
                             <span class="schedule-change-label schedule-change-label-1">+0</span>
+                        </td>
+                        <td class="col2">
+                            <span class="schedule-change-label schedule-change-label-2">+0</span>
+                        </td>
+                        <td class="col3">
+                            <span class="schedule-change-label schedule-change-label-3">+0</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">&nbsp;</th>
+                        <td class="col0">
+                            <button class="reduce-time reduce-time-0">-</button>
+                            <button class="add-time add-time-0">+</button>
+                        </td>
+                        <td class="col1">
+                            <button class="reduce-time reduce-time-1">-</button>
                             <button class="add-time add-time-1">+</button>
                         </td>
-                        <td>
+                        <td class="col2">
                             <button class="reduce-time reduce-time-2">-</button>
-                            <span class="schedule-change-label schedule-change-label-2">+0</span>
                             <button class="add-time add-time-2">+</button>
+                        </td>
+                        <td class="col3">
+                            <button class="reduce-time reduce-time-3">-</button>
+                            <button class="add-time add-time-3">+</button>
                         </td>
                     </tr>
                 </thead>
