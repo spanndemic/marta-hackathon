@@ -2,6 +2,9 @@ $(function() {
 
     var _cache = {},
         _trips = [],
+        _zeroOffset = 10, // TODO
+        _firstOffset = 10,
+        _secondOffset = 10,
 
         _init = function _init() {
             _setupCache();
@@ -10,9 +13,67 @@ $(function() {
 
         _setupCache = function _setupCache() {
 
+            _cache.optimizeButton = $('#optimize');
+            _cache.newDataButton = $('#new-data');
+
+            _cache.addTimeOne = $('.add-time-1');
+            _cache.addTimeTwo = $('.add-time-2');
+            _cache.reduceTimeOne = $('.reduce-time-1');
+            _cache.reduceTimeTwo = $('.reduce-time-2');
         },
 
+        // these events are on permanent interface elements
+        // called once on DOM ready
         _addEvents = function _addEvents() {
+
+            _cache.optimizeButton.click(function() {
+                var offsets = ScheduleOptimizer.getOptimizedOffsets();
+
+                _firstOffset = offsets[0];
+                _secondOffset = offsets[1];
+                _zeroOffset = 30 - _firstOffset - _secondOffset;
+                _updateTrainIntervals();
+
+            });
+
+            _cache.newDataButton.click(function() {
+                _zeroOffset = 10;
+                _firstOffset = 10;
+                _secondOffset = 10;
+                _generateData();
+                _renderData();
+                _updateTrainIntervals();
+            });
+
+            _cache.addTimeOne.click(function() {
+                _firstOffset++;
+                _secondOffset--;
+                _updateTrainIntervals();
+            });
+
+            _cache.reduceTimeOne.click(function() {
+                _firstOffset--;
+                _secondOffset++;
+                _updateTrainIntervals();
+            });
+
+            _cache.addTimeTwo.click(function() {
+                _secondOffset++;
+                _zeroOffset--;
+                _updateTrainIntervals();
+            });
+
+            _cache.reduceTimeTwo.click(function() {
+                _secondOffset--;
+                _zeroOffset++;
+                _updateTrainIntervals();
+            });
+        },
+
+        // these events are on (potentially) temporary interface elements
+        // called once after each new dataset
+        _addTripEvents = function _addTripEvents() {
+
             $('.tag').hover(function() {
                 $('.tag-label', $(this)).show();
             }, function() {
@@ -31,23 +92,6 @@ $(function() {
                 $('.wait-time-label', $(this)).hide();
             });
 
-            $('#optimize').click(function() {
-                var offsets = ScheduleOptimizer.getOptimizedOffsets();
-
-                // let the slider callback handle UI updates
-                $("#slider").slider("values", 0, offsets[0]);
-                $("#slider").slider("values", 1, offsets[0] + offsets[1]);
-
-            });
-
-            $('#new-data').click(function() {
-                _generateData();
-                _renderData();
-                _updateTrainTimes(10, 10);
-
-                $("#slider").slider("values", 0, 10);
-                $("#slider").slider("values", 1, 20);
-            });
         },
 
         _updateTrainTimes = function _updateTrainTimes(first_offset = 10, second_offset = 10) {
@@ -113,12 +157,8 @@ $(function() {
                 // calculate time on platform
                 var initialPlatformTime = $('.platform-time', $(this)).data('initial-platform-time')
                 var currentPlatformTime = firstTrainTime - minTime;
-                $('.platform-time', $(this)).attr('data-current-platform-time', currentPlatformTime);
 
-                // adjust position
-                $('.platform-time', $(this)).css('left',  _timeToLeftOffset(minTime));
-                $('.platform-time', $(this)).css('right', _timeToRightOffset(minTime + currentPlatformTime));
-
+                
                 // color
                 var diff = (currentPlatformTime - initialPlatformTime) / 60;
                 _getSpeedClass($('.platform-time', $(this)), diff);
@@ -144,6 +184,23 @@ $(function() {
                 $('.time-saved', $(this)).css('left', _timeToLeftOffset(tripEndTime));
                 $('.time-saved', $(this)).css('width', _minutesToWidth(timeSaved));
 
+                // adjust position, if less than initial
+                if (initialPlatformTime >= currentPlatformTime) {
+                    $('.platform-time', $(this)).css('left',  _timeToLeftOffset(minTime));
+                    $('.platform-time', $(this)).css('right', _timeToRightOffset(minTime + currentPlatformTime));
+                    // hide red line
+                    $('.additional-time', $(this)).css('left',  _timeToLeftOffset(minTime));
+                    $('.additional-time', $(this)).css('right', _timeToRightOffset(minTime));
+                } else {
+                    // maximize black line at initial time
+                    $('.platform-time', $(this)).css('left',  _timeToLeftOffset(minTime));
+                    $('.platform-time', $(this)).css('right', _timeToRightOffset(minTime + initialPlatformTime));
+                    // extend red line
+                    $('.additional-time', $(this)).css('left',  _timeToLeftOffset(minTime));
+                    $('.additional-time', $(this)).css('right', _timeToRightOffset(minTime + currentPlatformTime));
+                }
+                
+
                 $('.platform-time .wait-time-label', $(this)).html('Walk time: 1 min<br />Wait time: ' + Math.ceil(currentPlatformTime/60) + ' min<br />(' + changeLabel + ' change)');
 
             });
@@ -162,6 +219,20 @@ $(function() {
             _displaySchedule(1, ScheduleHelper.getScheduleForRouteStation(1, 1, 54, first_offset, second_offset), first_offset, second_offset); // red SB
             _displaySchedule(2, ScheduleHelper.getScheduleForRouteStation(0, 0, 41, first_offset, second_offset), first_offset, second_offset); // gold NB
             _displaySchedule(3, ScheduleHelper.getScheduleForRouteStation(0, 1, 50, first_offset, second_offset), first_offset, second_offset); // gold SB
+
+            // adjust offsets
+            var firstOffsetDisplay = _firstOffset - 10;
+            var secondOffsetDisplay = (20 - _firstOffset - _secondOffset) * -1;
+
+            if (firstOffsetDisplay >= 0) {
+                firstOffsetDisplay = "+" + firstOffsetDisplay;
+            }
+            if (secondOffsetDisplay >= 0) {
+                secondOffsetDisplay = "+" + secondOffsetDisplay;
+            }
+
+            $('.schedule-change-label-1').html(firstOffsetDisplay);
+            $('.schedule-change-label-2').html(secondOffsetDisplay);
 
         },
 
@@ -286,6 +357,7 @@ $(function() {
                         '<div class="stop trip-end" data-end-station="' + _trips[i].end.station_id + '"></div>' + 
                         //'<div class="tag tag-off" data-row="' + i + '" data-time="' + _trips[i].end.transit_time + '" data-time-display="' + tagOffTime + '"><div class="tag-label">Exit Station<br />' + tagOffTime + '<br />' + endStation + '</div></div>' +
                         '<div class="connection connection--' + railLine + '" data-route="' + _trips[i].start.route + '" data-route-direction="' + _trips[i].start.route_direction + '"><div class="train-begin"></div><div class="train-middle"></div><div class="train-end"></div><div class="train-label"></div></div>' + 
+                        '<div class="additional-time" data-initial-platform-time="' + platformTime + '">&nbsp;</div>' +
                         '<div class="platform-time" data-initial-platform-time="' + platformTime + '"><div class="wait-time-label"></div></div>' +
                         '<div class="time-saved"><div class="time-saved-label"></div></div>' + 
                     '</div>' +
@@ -307,49 +379,42 @@ $(function() {
                 });
 
             // add events to new elements
-            _addEvents();
-        };
+            _addTripEvents();
+        },
 
-    $("#slider").slider({
-        range: true,
-        min: 4,
-        max: 26,
-        values: [10, 20],
-        change: function(event, ui) {
-            var first_offset = ui.values[0];
-            var second_offset = ui.values[1] - first_offset;
-            var third_offset = 30 - (first_offset + second_offset);
+        _updateTrainIntervals = function _updateTrainIntervals() {
+
+            //var _zeroOffset = 30 - (_firstOffset + _secondOffset);
             var unit = 160 / 24;
-            $('.trains .train-marker--one').css('width', (unit * first_offset / 10) + '%');
-            $('.trains .train-marker--two').css('width', (unit * second_offset / 10) + '%');
-            $('.trains .train-marker--three').css('width', (unit * third_offset / 10) + '%');
+            $('.trains .train-marker--one').css('width', (unit * _firstOffset / 10) + '%');
+            $('.trains .train-marker--two').css('width', (unit * _secondOffset / 10) + '%');
+            $('.trains .train-marker--three').css('width', (unit * _zeroOffset / 10) + '%');
 
-            $('#slider-key .train-marker--one').html(first_offset);
-            $('#slider-key .train-marker--two').html(second_offset);
-            $('#slider-key .train-marker--three').html(third_offset);
+            $('#slider-key .train-marker--one').html(_firstOffset);
+            $('#slider-key .train-marker--two').html(_secondOffset);
+            $('#slider-key .train-marker--three').html(_zeroOffset);
 
             // get new schedule
             // loop through schedule, adjust 'left' css based on depart times
             // 
 
-            $('.trains .train-marker--one').css('left', (unit * first_offset / 10) + '%');
-            $('.trains .train-marker--two').css('left', (unit * second_offset / 10) + '%');
-            $('.trains .train-marker--three').css('left', (unit * third_offset / 10) + '%');
+            $('.trains .train-marker--one').css('left', (unit * _firstOffset / 10) + '%');
+            $('.trains .train-marker--two').css('left', (unit * _secondOffset / 10) + '%');
+            $('.trains .train-marker--three').css('left', (unit * _zeroOffset / 10) + '%');
 
-            $('#slider-key .train-key--one').html(first_offset);
-            $('#slider-key .train-key--two').html(second_offset);
-            $('#slider-key .train-key--three').html(third_offset);
+            $('#slider-key .train-key--one').html(_firstOffset);
+            $('#slider-key .train-key--two').html(_secondOffset);
+            $('#slider-key .train-key--three').html(_zeroOffset);
 
-            _updateTrainTimes(first_offset, second_offset);
-        }
-    });
+            _updateTrainTimes(_firstOffset, _secondOffset);
+        };
 
     
-
+    _init();
     _generateData();
     _renderData();
-    $("#slider").slider("values", 0, 10);
-    $("#slider").slider("values", 1, 20);
+    
+    _updateTrainIntervals();
 
     $('#info').modal('show');
 

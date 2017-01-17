@@ -22,16 +22,6 @@
             <h1 class="title">Rush Hour 2.0</h1>
             <div class="subtitle">Stephen Spann, 2016<br />*demica apps LLC</div>
 
-            <div id="controls">
-                <div id="slider-key">
-                    <div class="train-key train-key--three">10</div>
-                    <div class="train-key train-key--two">10</div>
-                    <div class="train-key train-key--one">10</div>
-                </div>
-                <div id="slider-label">Train Intervals (minutes):</div>
-                <div id="slider"></div>
-            </div>
-
             <div id="time-saved">
                 <div id="time-saved-label">Total time saved:</div>
                 <div id="time-saved-amount"></div>
@@ -41,22 +31,41 @@
             </div>
 
             <table id="departure-times">
-                <tr id="schedule0">
-                    <th>Red Line NB</th>
-                    <th><div class="station station--red-line">S7</div></th>
-                </tr>
-                <tr id="schedule1">
-                    <th>Red Line SB</th>
-                    <th><div class="station station--red-line">N11</div></th>
-                </tr>
-                <tr id="schedule2">
-                    <th>Gold Line NB</th>
-                    <th><div class="station station--gold-line">S7</div></th>
-                </tr>
-                <tr id="schedule3">
-                    <th>Gold Line SB</th>
-                    <th><div class="station  station--gold-line">NE10</div></th>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>Schedule Adjustments:</th>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>
+                            <button class="reduce-time reduce-time-1">-</button>
+                            <span class="schedule-change-label schedule-change-label-1">+0</span>
+                            <button class="add-time add-time-1">+</button>
+                        </td>
+                        <td>
+                            <button class="reduce-time reduce-time-2">-</button>
+                            <span class="schedule-change-label schedule-change-label-2">+0</span>
+                            <button class="add-time add-time-2">+</button>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="schedule0">
+                        <th>Red Line NB</th>
+                        <th><div class="station station--red-line">S7</div></th>
+                    </tr>
+                    <tr id="schedule1">
+                        <th>Red Line SB</th>
+                        <th><div class="station station--red-line">N11</div></th>
+                    </tr>
+                    <tr id="schedule2">
+                        <th>Gold Line NB</th>
+                        <th><div class="station station--gold-line">S7</div></th>
+                    </tr>
+                    <tr id="schedule3">
+                        <th>Gold Line SB</th>
+                        <th><div class="station  station--gold-line">NE10</div></th>
+                    </tr>
+                <tbody>
             </table>
         </div>
 

@@ -308,39 +308,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000a2e3', e
     height: 5px;
 }
 
-#controls {
-    position: absolute;
-    width: 40%;
-    right: 35%;
-    left: 25%;
-}
-
-
-#slider {
-    position: absolute;
-    width: 50%;
-    left: 0;
-    top: 45px;
-    z-index: 999;
-}
-
-#slider-label {
-    position: absolute;
-    width: 100%;
-    right: 0;
-    top: 15px;
-}
-
-#slider-key {
-    position: absolute;
-    z-index: 10;
-    top: 15px;
-    right: 0;
-    width: 1080px;
-    right: 0;
-}
-
-#slider-key .train-key {
+.train-key {
     float: right;
     height: 45px;
     text-align: center;
@@ -398,7 +366,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000a2e3', e
     z-index: 9999;
 }
 
-.platform-time {
+.platform-time, .additional-time {
     position: absolute;
     top: 5px;
     height: 6px;
@@ -409,7 +377,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000a2e3', e
     background-color: #000000;
 }
 
-.platform-time.slower {
+.additional-time {
     background-color: red;
 }
 
@@ -512,9 +480,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000a2e3', e
     margin-left: 200px;
     position: relative;
     overflow-x: hidden;
+    overflow-y: visible;
     height: 30px;
 }
-
 
 
 
