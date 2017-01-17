@@ -231,8 +231,8 @@ $(function() {
                 secondOffsetDisplay = "+" + secondOffsetDisplay;
             }
 
-            $('.schedule-change-label-1').html(firstOffsetDisplay);
-            $('.schedule-change-label-2').html(secondOffsetDisplay);
+            $('.schedule-change-label-1').html(firstOffsetDisplay + ' min');
+            $('.schedule-change-label-2').html(secondOffsetDisplay + ' min');
 
         },
 
