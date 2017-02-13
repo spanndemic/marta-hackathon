@@ -412,6 +412,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000a2e3', e
     border-spacing: 0 0.4em;
     border: 0px solid transparent;
     width: calc(100% - 270px);
+    font-size: 14px;
 }
 
 #departure-times tbody {
