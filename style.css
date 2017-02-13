@@ -10,8 +10,8 @@ body {
 
 .header {
     position: fixed;
-    height: 275px;
-    background-color: white;
+    height: 44px;
+    background-color: #536879;
     width: 100%;
     z-index: 999;
     left: 0;
@@ -19,18 +19,34 @@ body {
 
 .title {
     position: absolute;
-    top: 10px;
     left: 20px;
     z-index: 20;
     margin: 0;
+    color: white;
+    font-size: 24px;
+    line-height: 44px;
 }
 
-.subtitle {
+.company {
     position: absolute;
     text-align: center;
+    right: 0;
     width: 250px;
-    top: 50px;
-    line-height: 16px;
+    line-height: 44px;
+}
+
+.company a {
+    color: white;
+}
+
+.controls {
+    position: fixed;
+    height: 275px;
+    background-color: white;
+    width: 100%;
+    z-index: 999;
+    left: 0;
+    top: 44px;
 }
 
 
