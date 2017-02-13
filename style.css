@@ -430,13 +430,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000a2e3', e
 
 .station {
     display: inline-block;
-    width: 30px;
-    height: 30px;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    border-radius: 15px;
+    width: 36px;
+    height: 36px;
+    -webkit-border-radius: 18px;
+    -moz-border-radius: 18px;
+    border-radius: 18px;
     font-size: 11px;
-    line-height: 30px;
+    line-height: 36px;
     text-align: center;
 }
 
