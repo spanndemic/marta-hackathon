@@ -164,17 +164,9 @@ $(function() {
                 $('.train-label', $(this)).html(routeText + '<br />' + startStationName + '<br />' + endStationName);
                 $('.route-label', $(this)).html(routeText);
 
-                //console.log('*** ' + routeText + ' ***');
-
-                //console.log('firstTrainTime', firstTrainTime);
-                //console.log('minTime', minTime);
-
                 // calculate time on platform
                 var initialPlatformTime = $('.platform-time', $(this)).data('initial-platform-time')
                 var currentPlatformTime = firstTrainTime - minTime;
-
-                //console.log('initialPlatformTime', initialPlatformTime);
-                //console.log('currentPlatformTime', currentPlatformTime);
 
                 // color
                 var diff = (currentPlatformTime - initialPlatformTime) / 60;
@@ -196,8 +188,6 @@ $(function() {
                 }
                 $('.result', $(this)).html(change);
                 $('.result', $(this)).attr('data-result-diff', diff);
-
-                //console.log('timeSaved', timeSaved);
 
                 // show green for time saved
                 $('.time-saved', $(this)).css('left', _timeToLeftOffset(tripEndTime));
@@ -261,8 +251,6 @@ $(function() {
         },
 
         _displaySchedule = function _displaySchedule(scheduleNumber, schedule, zero_offset, first_offset, second_offset) {
-
-            //console.log(schedule);
 
             var i;
             for (i = 0; i < schedule.length; i++) {
@@ -414,13 +402,9 @@ $(function() {
             var unit = 160 / 24;
             $('.trains').css('margin-left', (unit * _zeroOffset / 10) + '%');
 
-            console.log('offsets: ' + _zeroOffset + ' ' + _firstOffset + ' ' + _secondOffset);
-
             var zeroPercent = unit * (_firstOffset - _zeroOffset) / 10;
             var firstPercent = unit * (_secondOffset - _firstOffset) / 10;
             var secondPercent = unit * (30 - _secondOffset + _zeroOffset) / 10;
-
-            console.log('percents: ' + zeroPercent + '% ' + firstPercent + '% ' + secondPercent + '%');
 
             // change first marker based on difference betwen zero Offset and first offset
             $('.trains .train-marker--zero').css('width', zeroPercent + '%');
