@@ -32,9 +32,9 @@ $(function() {
 
                 var offsets = ScheduleOptimizer.getOptimizedOffsets();
 
-                _firstOffset = offsets[0];
-                _secondOffset = offsets[1];
-                _zeroOffset = 30 - _firstOffset - _secondOffset;
+                _zeroOffset = offsets[0];
+                _firstOffset = offsets[1];
+                _secondOffset = offsets[2];
                 _updateTrainIntervals();
 
             });
