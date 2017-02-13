@@ -327,7 +327,7 @@ $(function() {
         _generateData = function _generateData() {
             _trips = [];
             var i;
-            for (i = 0; i < 30; i++) {
+            for (i = 0; i < 50; i++) {
                 _trips.push(DataHelper.generateTrip("PM"));
             }
         },
