@@ -247,7 +247,7 @@ var ScheduleHelper = (function () {
         },
 
         // min_start_time = seconds since midnight
-        _getFirstTrainTime = function _getFirstTrainTime(route, routeDirection, minStartTime, stationId, zero_offset = 0, first_offset = 10, second_offset = 10) {
+        _getFirstTrainTime = function _getFirstTrainTime(route, routeDirection, minStartTime, stationId, zero_offset = 0, first_offset = 10, second_offset = 20) {
 
             var startTimes = _getStartTimesForRoute(route, routeDirection),
                 stations = _getStationsForRoute(route, routeDirection),
