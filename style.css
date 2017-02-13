@@ -93,7 +93,7 @@ body {
 .tag-label {
     display: none;
     position: relative;
-    top: -70px;
+    top: 0;
     left: 10px;
     text-align: center;
     width: 90px;
@@ -116,7 +116,7 @@ body {
     background-color: white;
     text-align: center;
     position: relative;
-    top: -70px;
+    top: 0;
     left: 10px;
     z-index: 100;
 }
@@ -360,7 +360,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000a2e3', e
     background-color: white;
     text-align: center;
     position: relative;
-    top: -70px;
+    top: 0;
     left: 10px;
     z-index: 100;
     width: 150px;
