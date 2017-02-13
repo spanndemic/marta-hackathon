@@ -189,20 +189,20 @@ var ScheduleHelper = (function () {
 
         },
 
-        _getScheduleForRouteStation = function _getScheduleForRouteStation(route, routeDirection, stationId, firstOffset, secondOffset) {
+        _getScheduleForRouteStation = function _getScheduleForRouteStation(route, routeDirection, stationId, zeroOffset, firstOffset, secondOffset) {
 
             var intervals = _getTimeIntervalsForRoute(route, routeDirection),
                 stations = _getStationsForRoute(route, routeDirection),
                 startTimes = _getStartTimesForRoute(route, routeDirection),
-                offset,
+                stationOffset,
                 i,
                 time,
                 schedule = [];
 
-            offset = stations.indexOf(stationId); // also interval index?
-            interval = intervals[offset];
+            stationOffset = stations.indexOf(stationId); // also interval index?
+            interval = intervals[stationOffset];
 
-            var stopTimes = _getStopTimes(startTimes, offset, firstOffset, secondOffset);
+            var stopTimes = _getStopTimes(startTimes, stationOffset, zeroOffset, firstOffset, secondOffset);
 
 
             for(i = 0; i < stopTimes.length; i++) {
@@ -216,30 +216,38 @@ var ScheduleHelper = (function () {
 
         },
 
-        _getStopTimes = function _getStopTimes(startTimes, interval, first_offset = 10, second_offset = 10) {
+        // use get times for station instead?
+        _getStopTimes = function _getStopTimes(startTimes, station_offset, zero_offset = 0, first_offset = 10, second_offset = 20) {
             var times = startTimes.slice(),
                 i;
 
             // loop through start times
             for (i = 0; i < times.length; i++) {
 
-                if (i % 3 == 1) {
-                    // 'two' class trains
-                    times[i] = times[i] + (interval * 60) + ((first_offset - 10) * 60);
-                } else if (i % 3 == 2) {
-                    // 'three' class columns
-                    times[i] = times[i] + (interval * 60) + ((first_offset + second_offset - 20) * 60);
-                } else {
-                    // 'one' class columns
-                    times[i] = times[i] + (interval * 60);
+                var remainder = i % 3;
+
+                switch(remainder) {
+                    case 0:
+                        // zero offset column
+                        times[i] = times[i] + (station_offset * 60) + (zero_offset * 60);
+                        break;
+                    case 1:
+                        // offset one column
+                        times[i] = times[i] + (station_offset * 60) + ((first_offset - 10) * 60);
+                        break;
+                    case 2:
+                        // offset two column
+                        times[i] = times[i] + (station_offset * 60) + ((second_offset - 20) * 60);
+                        break;
                 }
+
             }
 
             return times;
         },
 
         // min_start_time = seconds since midnight
-        _getFirstTrainTime = function _getFirstTrainTime(route, routeDirection, minStartTime, stationId, first_offset = 10, second_offset = 10) {
+        _getFirstTrainTime = function _getFirstTrainTime(route, routeDirection, minStartTime, stationId, zero_offset = 0, first_offset = 10, second_offset = 10) {
 
             var startTimes = _getStartTimesForRoute(route, routeDirection),
                 stations = _getStationsForRoute(route, routeDirection),
@@ -252,7 +260,7 @@ var ScheduleHelper = (function () {
             // get offset of station in the route
             intervalIndex = stations.indexOf(stationId);
 
-            offsetTimes = _getStopTimes(startTimes, intervals[intervalIndex], first_offset, second_offset);
+            offsetTimes = _getStopTimes(startTimes, intervals[intervalIndex], zero_offset, first_offset, second_offset);
 
             // loop through offset times
             for (i = 0; i < offsetTimes.length; i++) {
