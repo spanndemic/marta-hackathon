@@ -464,9 +464,20 @@ $(function() {
     _init();
     _generateData();
     _renderData();
-    
+
     _updateTrainIntervals();
 
-    //$('#info').modal('show');
+    $('#info').modal('show');
+
+    // start off optimized
+    setTimeout(function() {
+        var offsets = ScheduleOptimizer.getOptimizedOffsets();
+        _zeroOffset = offsets[0];
+        _firstOffset = offsets[1];
+        _secondOffset = offsets[2];
+        _updateTrainIntervals();
+    }, 500);
+    
+
 
 });
