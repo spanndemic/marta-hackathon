@@ -15,6 +15,7 @@ $(function() {
 
             _cache.optimizeButton = $('#optimize');
             _cache.newDataButton = $('#new-data');
+            _cache.resetButton = $('#reset');
 
             _cache.addTimeZero = $('.add-time-0');
             _cache.reduceTimeZero = $('.reduce-time-0');
@@ -28,6 +29,17 @@ $(function() {
         // called once on DOM ready
         _addEvents = function _addEvents() {
 
+            _cache.newDataButton.click(function() {
+                _zeroOffset = 0;
+                _firstOffset = 10;
+                _secondOffset = 20;
+                _generateData();
+                _renderData();
+                _updateTrainIntervals();
+
+                return false;
+            });
+
             _cache.optimizeButton.click(function() {
 
                 var offsets = ScheduleOptimizer.getOptimizedOffsets();
@@ -37,15 +49,18 @@ $(function() {
                 _secondOffset = offsets[2];
                 _updateTrainIntervals();
 
+                return false;
+
             });
 
-            _cache.newDataButton.click(function() {
+            _cache.resetButton.click(function() {
                 _zeroOffset = 0;
                 _firstOffset = 10;
                 _secondOffset = 20;
-                _generateData();
                 _renderData();
                 _updateTrainIntervals();
+
+                return false;
             });
 
             _cache.addTimeZero.click(function() {
@@ -258,6 +273,14 @@ $(function() {
             $('.schedule-change-label-0').html(zeroOffsetDisplay + ' min');
             $('.schedule-change-label-1').html(firstOffsetDisplay + ' min');
             $('.schedule-change-label-2').html(secondOffsetDisplay + ' min');
+
+            $('.schedule-change-label').each(function(i, el){
+                if ($(this).html() != '+0 min') {
+                    $(this).css('color', 'blue');
+                } else {
+                    $(this).css('color', 'black');
+                }
+            });
             
         },
 
@@ -266,7 +289,7 @@ $(function() {
             var i;
             for (i = 0; i < schedule.length; i++) {
 
-                if ($('#schedule' + scheduleNumber + ' td').length > i) {  
+                if ($('#schedule' + scheduleNumber + ' td').length > i + 1) {  
                     // child exists, just update html
                     var el = $('#schedule' + scheduleNumber + ' td:nth-child(' + (i + 2) + ')'); // +2 because 1 th elements
                     el.html(schedule[i]);

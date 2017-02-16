@@ -6,6 +6,7 @@ body {
     position: relative;
     width: 100%;
     margin: 0 auto;
+    height: 100vh;
 }
 
 .header {
@@ -44,7 +45,7 @@ body {
     top: 44px;
     width: 100%;
     text-align: center;
-    padding: 20px;
+    padding: 15px;
     font-size: 20px;
 }
 
@@ -53,14 +54,32 @@ body {
     padding: 0 3px;
 }
 
+.menu {
+    position: fixed;
+    top: 150px;
+}
+
+.menu ul {
+    list-style: none;
+}
+
+.menu a, .menu a:focus {
+    font-size: 18px;
+    color: #536879;
+    text-decoration: none;
+}
+
+.menu i {
+    margin-right: 10px;
+}
+
 .controls {
     position: fixed;
     height: 231px;
-    background-color: white;
-    width: 100%;
     z-index: 999;
-    left: 0;
-    top: 150px;
+    left: 250px;
+    top: 130px;
+    right: 0;
 }
 
 
@@ -73,7 +92,7 @@ body {
     display: block;
     position: absolute;
     z-index: 20;
-    top: 0px;
+    top: 2px;
     margin-left: -8px;
 }
 
@@ -112,8 +131,10 @@ body {
 .time-saved {
     background-color: #00FF00;
     width: 20px;
-    height: 12px;
+    height: 8px;
+    top: 6px;
     position: absolute;
+    margin-left: 6px;
 }
 
 .tag:hover {
@@ -158,11 +179,12 @@ body {
 }
 
 #pm-trips {
-    margin-top: 300px;
-    height: auto;
-    width: 100%;
-    float: left;
-    position: relative;
+    position: absolute;
+    top: 325px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: scroll;
 }
 
 .cover {
@@ -174,7 +196,7 @@ body {
 .times {
     position: fixed;
     height: 100%;
-    top: 275px;
+    top: 300px;
     right: 0;
     left: 200px;
 }
@@ -200,7 +222,7 @@ body {
 }
 
 .trip-wrap {
-    height: 40px;
+    height: 24px;
     position: relative;
 }
 
@@ -225,7 +247,7 @@ body {
 .trains .train-marker:before {
     content: ' ';
     width: 30px;
-    height: 30px;
+    height: 21px;
     display: block;
     left: -14px;
     position: relative;
@@ -282,6 +304,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000a2e3', e
     background-color: transparent;
     position: absolute;
     z-index: 10;
+    top: 2px;
 }
 
 .connection--gold-line {
@@ -374,8 +397,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000a2e3', e
 
 .platform-time, .additional-time {
     position: absolute;
-    top: 5px;
-    height: 6px;
+    top: 6px;
+    height: 8px;
     background-color: black;
 }
 
@@ -415,6 +438,22 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000a2e3', e
     color: red;
 }
 
+#schedule-modifications {
+    font-size: 14px;
+}
+
+#schedule-modifications th {
+    padding-bottom: 10px;
+}
+
+#schedule-modifications td {
+    padding: 10px;
+}
+
+#schedule-modifications button {
+    margin-top: 10px;
+}
+
 #departure-times {
     position: absolute;
     top: 0;
@@ -429,6 +468,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000a2e3', e
     border: 0px solid transparent;
     width: calc(100% - 270px);
     font-size: 14px;
+}
+
+#departure-times th {
+    padding-bottom: 10px;
 }
 
 #departure-times tbody {
@@ -446,14 +489,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000a2e3', e
 
 .station {
     display: inline-block;
-    width: 36px;
+    /*width: 36px;
     height: 36px;
+    line-height: 36px;
     -webkit-border-radius: 18px;
     -moz-border-radius: 18px;
-    border-radius: 18px;
+    border-radius: 18px;*/
     font-size: 11px;
-    line-height: 36px;
     text-align: center;
+    padding: 1px 2px;
 }
 
 #departure-times .station {
@@ -492,7 +536,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000a2e3', e
     font-weight: bold;
     position: absolute;
     left: 10px;
-    line-height: 30px;
+    line-height: 16px;
 }
 
 .station--origin, .station--destination {

@@ -3,7 +3,8 @@
     <title>demic apps Data Visualizations | MARTA Hackathon - Rush Hour 2.0</title>
     <meta name="description" content="This visualization demonstrates how adjusting train times can reduce the overall time Atlantans spend waiting for trains." />
     <link rel="stylesheet" href="libs/bootstrap.min.css" />
-    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="style.css" />
 
     <!-- Open Graph data -->
@@ -28,52 +29,64 @@
 
         </div>
 
+        <div class="menu">
+            <ul>
+                <li><a href="" id="new-data"><i class="fa fa-refresh"></i>New Data</a></li>
+                <li><a href="" id="optimize"><i class="fa fa-play"></i>Optimize</a></li>
+                <li><a href="" id="reset"><i class="fa fa-undo"></i>Reset</a></li>
+                <li><a href="" data-toggle="modal" data-target="#info"><i class="fa fa-info-circle"></i>Info</a></li>
+            </ul>
+        </div>
+
         <div class="controls">
 
-            <div id="time-saved">
-                <div id="time-saved-label">Total time saved:</div>
-                <div id="time-saved-amount"></div>
-                <button class="btn btn-primary" id="optimize">Optimize</button>
-                <button class="btn btn-primary new-data" id="new-data">New Data</button>
-                <button class="btn info" data-toggle="modal" data-target="#info">Info</button>
-            </div>
-
-            <table id="departure-times">
+            <table id="schedule-modifications">
                 <thead>
                     <tr>
-                        <th colspan="2">Schedule Adjustments:</th>
+                        <th colspan="3">Schedule Modifications</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
                         <td class="col0">
-                            Group 1<br />
                             <span class="schedule-change-label schedule-change-label-0">+0</span><br />
                             <button class="reduce-time reduce-time-0">-</button>
                             <button class="add-time add-time-0">+</button>
                         </td>
                         <td class="col1">
-                            Group 2<br />
                             <span class="schedule-change-label schedule-change-label-1">+0</span><br />
                             <button class="reduce-time reduce-time-1">-</button>
                             <button class="add-time add-time-1">+</button>
                         </td>
                         <td class="col2">
-                            Group 3<br />
                             <span class="schedule-change-label schedule-change-label-2">+0</span><br />
                             <button class="reduce-time reduce-time-2">-</button>
                             <button class="add-time add-time-2">+</button>
                         </td>
                     </tr>
+                </tbody>
+            </table>
+
+            <table id="departure-times">
+
+                <thead>
+                    <tr>
+                        <th colspan="5">Train Departures</th>
+                    </tr>
                 </thead>
+
                 <tbody>
                     <tr id="schedule0">
-                        <th>Red Line NB</th>
+                        <td>Red Line NB</td>
                     </tr>
                     <tr id="schedule1">
-                        <th>Red Line SB</th>
+                        <td>Red Line SB</td>
                     </tr>
                     <tr id="schedule2">
-                        <th>Gold Line NB</th>
+                        <td>Gold Line NB</td>
                     </tr>
                     <tr id="schedule3">
-                        <th>Gold Line SB</th>
+                        <td>Gold Line SB</td>
                     </tr>
                 <tbody>
             </table>
