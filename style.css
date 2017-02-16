@@ -39,14 +39,28 @@ body {
     color: white;
 }
 
+.summary {
+    position: fixed;
+    top: 44px;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    font-size: 20px;
+}
+
+.summary span {
+    font-size: 36px;
+    padding: 0 3px;
+}
+
 .controls {
     position: fixed;
-    height: 275px;
+    height: 231px;
     background-color: white;
     width: 100%;
     z-index: 999;
     left: 0;
-    top: 44px;
+    top: 150px;
 }
 
 
@@ -186,7 +200,7 @@ body {
 }
 
 .trip-wrap {
-    height: 34px;
+    height: 40px;
     position: relative;
 }
 
@@ -329,11 +343,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000a2e3', e
     font-size: 20px;
 }
 
-#time-saved-amount.faster {
+.faster {
     color: green;
 }
 
-#time-saved-amount.slower {
+.slower {
     color: red;
 }
 
@@ -440,6 +454,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000a2e3', e
     font-size: 11px;
     line-height: 36px;
     text-align: center;
+}
+
+#departure-times .station {
+    margin: 2px;
 }
 
 .station--red-line {

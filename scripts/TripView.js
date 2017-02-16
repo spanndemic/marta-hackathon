@@ -215,13 +215,24 @@ $(function() {
             });
 
             // total up all of the diffs
-            var totalTimeSaved = 0;
+            var netTimeSaved = 0,
+                totalTimeSaved = 0;
             $('.result').each(function() {
                 var resultDiff = parseInt($(this).attr('data-result-diff'));
-                totalTimeSaved -= resultDiff;
+                netTimeSaved -= resultDiff;
+                if (resultDiff < 1) {
+                    totalTimeSaved -= resultDiff;
+                }
             });
-            $('#time-saved-amount').html(totalTimeSaved + ' min');
-            _getSpeedClass($('#time-saved-amount'), -totalTimeSaved);
+            $('.net-saved').html(netTimeSaved);
+            _getSpeedClass($('.net-saved'), -netTimeSaved);
+            $('.total-saved').html(totalTimeSaved);
+            _getSpeedClass($('.total-saved'), -totalTimeSaved);
+
+            // total up passengers who had a faster commute
+            var totalCommutersHelped = $('.result.faster').length;
+            $('.commuters-helped').html(totalCommutersHelped);
+            _getSpeedClass($('.commuters-helped'), -totalCommutersHelped);
 
             // adjust the train schedule
             _displaySchedule(0, ScheduleHelper.getScheduleForRouteStation(1, 0, 41, _zeroOffset, _firstOffset, _secondOffset), _zeroOffset, _firstOffset, _secondOffset); // red NB
@@ -257,7 +268,7 @@ $(function() {
 
                 if ($('#schedule' + scheduleNumber + ' td').length > i) {  
                     // child exists, just update html
-                    var el = $('#schedule' + scheduleNumber + ' td:nth-child(' + (i + 3) + ')'); // +3 because 2 th elements
+                    var el = $('#schedule' + scheduleNumber + ' td:nth-child(' + (i + 2) + ')'); // +2 because 1 th elements
                     el.html(schedule[i]);
                 } else {
                     // child does not exist, append
@@ -326,10 +337,12 @@ $(function() {
 
         _generateData = function _generateData() {
             _trips = [];
-            var i;
-            for (i = 0; i < 50; i++) {
+            var i,
+                totalCommuters = 50;
+            for (i = 0; i < totalCommuters; i++) {
                 _trips.push(DataHelper.generateTrip("PM"));
             }
+            $('.total-commuters').html(totalCommuters);
         },
 
         _renderData = function _renderData() {
